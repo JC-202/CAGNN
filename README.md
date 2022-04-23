@@ -1,4 +1,4 @@
-# MMP
+# CAGNN
 A **PyTorch** implementation of CAGNN **"Exploiting Neighbor Effect: Conv-Agnostic GNNs Framework for Graphs with Heterophily"**.
 
 
