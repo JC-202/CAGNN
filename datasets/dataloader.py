@@ -11,7 +11,7 @@ from os import path as path
 import scipy
 import scipy.io
 
-class MMPData():
+class GraphData():
     def __init__(self, pyg_data, device, to_dense=False, to_dgl=False, add_ratio=0):
         self.edge_index = pyg_data.edge_index
         self.x = pyg_data.x
@@ -85,7 +85,7 @@ DATAPATH = path.dirname(path.abspath(__file__))
 
 def load_data(data_name, device, split_id=0, to_dense=False, to_dgl=False, add_ratio=0):
     data = load_pyg_data(data_name, device, split_id=split_id)
-    data = MMPData(data, device, to_dense, to_dgl, add_ratio=add_ratio)
+    data = GraphData(data, device, to_dense, to_dgl, add_ratio=add_ratio)
     return data
 
 
@@ -104,7 +104,6 @@ def load_dgl_data(data_name, device='cpu', split_id=0):
         noisy = 1 if 'noisy' in data_name else 0
         data_name = data_name.split('_')[0]
         g = load_dgl_citation(data_name)
-
         # standard 20 nodes/class for training
         features, labels, train_mask, val_mask, test_mask = g.ndata['feat'], g.ndata['label'], g.ndata[
             'train_mask'], g.ndata['val_mask'], g.ndata['test_mask']
