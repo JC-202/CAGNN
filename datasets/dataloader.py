@@ -11,6 +11,10 @@ from os import path as path
 import scipy
 import scipy.io
 
+
+'''
+The 10 splits of datasets are adapted from the geom-gcn: https://github.com/graphdml-uiuc-jlu/geom-gcn 
+'''
 class GraphData():
     def __init__(self, pyg_data, device, to_dense=False, to_dgl=False, add_ratio=0):
         self.edge_index = pyg_data.edge_index
